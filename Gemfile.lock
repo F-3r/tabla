@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    tabla (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  tabla!
+
+BUNDLED WITH
+   1.11.2
