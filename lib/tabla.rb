@@ -23,22 +23,20 @@ class Tabla
     load File.read path
   end
 
-  def initialize(data, &block)
+  def initialize(data)
     @lines = data.split("\n")
     @fields = split @lines.shift
-    @mapper = block
   end
 
   def parse
     @data = @lines.map do |line|
-      item = fields.zip(split(line)).to_h
-      item = mapper.call(item) if mapper
-      item
+      fields.zip(split(line)).to_h
     end
   end
 
   def each(&block)
-    block ? data.each(&block) : data.each
+    return enum_for(:each) unless block_given?
+    data.each(&block)
   end
 
   private

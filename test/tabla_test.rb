@@ -101,14 +101,3 @@ class EnumerableAPIImplementation < Minitest::Test
     assert_equal expected, @tabla.select { |i| i["desc"] == "Something"}
   end
 end
-
-class MapperBlockTest < Minitest::Test
-  def setup
-    @tabla = Tabla.new(TABLA) { |item| 1 }
-    @tabla.parse
-  end
-
-  def test_it_maps_all_the_items_through_the_mapper_block
-    @tabla.data.each { |item| assert_equal 1, item }
-  end
-end
